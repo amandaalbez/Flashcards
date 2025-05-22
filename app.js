@@ -4,6 +4,8 @@ let currentCardIndex = 0;
 let score = 0;
 let knownCards = [];
 let reviewMode = false;
+let currentSubject = null;
+let currentGroup = null;
 
 // DOM elements
 const deckSelectionEl = document.getElementById('deck-selection');
@@ -32,23 +34,36 @@ document.querySelectorAll('.deck-selector').forEach(selector => {
     });
 });
 
+document.querySelectorAll('.subject-selector').forEach(selector => {
+    selector.addEventListener('click', function() {
+        const subjectId = this.dataset.subject;
+        showGroups(subjectId);
+    });
+});
+
+document.getElementById('back-to-subjects').addEventListener('click', () => {
+    hideElement('group-selection');
+    showElement('subject-selection');
+});
+
 // Game functions
-function startGame(deckId) {
-    currentDeck = decks[deckId];
+function startGame(subjectId, groupId) {
+    currentSubject = decks[subjectId];
+    currentGroup = currentSubject.groups[groupId];
     currentCardIndex = 0;
     score = 0;
-    knownCards = new Array(currentDeck.cards.length).fill(false);
+    knownCards = new Array(currentGroup.cards.length).fill(false);
     
-    deckSelectionEl.classList.add('hidden');
-    flashcardGameEl.classList.remove('hidden');
-    resultsScreenEl.classList.add('hidden');
+    hideElement('group-selection');
+    showElement('flashcard-game');
+    hideElement('results-screen');
     
     updateCard();
     updateProgress();
 }
 
 function updateCard() {
-    const card = currentDeck.cards[currentCardIndex];
+    const card = currentGroup.cards[currentCardIndex];
     questionEl.textContent = card.question;
     answerEl.textContent = card.answer;
     
@@ -62,11 +77,11 @@ function updateCard() {
     dontKnowBtn.classList.add('hidden');
     
     prevBtn.disabled = currentCardIndex === 0;
-    nextBtn.disabled = currentCardIndex === currentDeck.cards.length - 1 && !reviewMode;
+    nextBtn.disabled = currentCardIndex === currentGroup.cards.length - 1 && !reviewMode;
 }
 
 function updateProgress() {
-    const totalCards = currentDeck.cards.length;
+    const totalCards = currentGroup.cards.length;
     const progressPercent = ((currentCardIndex + 1) / totalCards) * 100;
     
     progressTextEl.textContent = `Cartão ${currentCardIndex + 1} de ${totalCards}`;
@@ -106,7 +121,7 @@ prevBtn.addEventListener('click', function() {
 });
 
 nextBtn.addEventListener('click', function() {
-    if (currentCardIndex < currentDeck.cards.length - 1) {
+    if (currentCardIndex < currentGroup.cards.length - 1) {
         currentCardIndex++;
         updateCard();
         updateProgress();
@@ -128,7 +143,7 @@ dontKnowBtn.addEventListener('click', function() {
 });
 
 function goToNextCard() {
-    if (currentCardIndex < currentDeck.cards.length - 1) {
+    if (currentCardIndex < currentGroup.cards.length - 1) {
         currentCardIndex++;
         updateCard();
         updateProgress();
@@ -142,8 +157,32 @@ function showResults() {
     resultsScreenEl.classList.remove('hidden');
     
     const finalScoreEl = document.getElementById('final-score');
-    finalScoreEl.textContent = `${score}/${currentDeck.cards.length}`;
+    finalScoreEl.textContent = `${score}/${currentGroup.cards.length}`;
 }
+
+// Adicione isso próximo aos outros event listeners
+document.getElementById('restart-btn').addEventListener('click', () => {
+    currentCardIndex = 0;
+    score = 0;
+    knownCards = new Array(currentGroup.cards.length).fill(false);
+    
+    resultsScreenEl.classList.add('hidden');
+    flashcardGameEl.classList.remove('hidden');
+    
+    updateCard();
+    updateProgress();
+});
+
+document.getElementById('back-to-decks-btn').addEventListener('click', () => {
+    hideElement('results-screen');
+    showElement('subject-selection');
+    
+    currentSubject = null;
+    currentGroup = null;
+    currentCardIndex = 0;
+    score = 0;
+    knownCards = [];
+});
 
 // Keyboard navigation
 document.addEventListener('keydown', function(e) {
@@ -177,3 +216,34 @@ document.addEventListener('keydown', function(e) {
             break;
     }
 });
+
+function showGroups(subjectId) {
+    currentSubject = decks[subjectId];
+    const groupsGrid = document.getElementById('groups-grid');
+    const subjectTitle = document.getElementById('subject-title');
+    
+    subjectTitle.textContent = `${currentSubject.name} - Selecione o grupo`;
+    groupsGrid.innerHTML = '';
+    
+    Object.entries(currentSubject.groups).forEach(([groupId, group]) => {
+        const groupCard = document.createElement('div');
+        groupCard.className = `group-selector bg-white p-6 rounded-xl shadow-lg cursor-pointer hover:shadow-xl transition-shadow`;
+        groupCard.innerHTML = `
+            <h3 class="text-xl font-semibold text-${currentSubject.color}-700 mb-2">${group.name}</h3>
+            <p class="text-gray-600">${group.description}</p>
+        `;
+        groupCard.addEventListener('click', () => startGame(subjectId, groupId));
+        groupsGrid.appendChild(groupCard);
+    });
+    
+    hideElement('subject-selection');
+    showElement('group-selection');
+}
+
+function hideElement(id) {
+    document.getElementById(id).classList.add('hidden');
+}
+
+function showElement(id) {
+    document.getElementById(id).classList.remove('hidden');
+}

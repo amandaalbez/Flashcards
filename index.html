@@ -9,15 +9,39 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="p-8">
+    <!-- Header Section -->
+    <div class="max-w-2xl mx-auto text-center mb-12">
+        <h1 class="text-4xl font-bold text-white mb-3">Flashcards de IA</h1>
+        <p class="text-lg text-gray-300">Teste seus conhecimentos em Inteligência Artificial</p>
+    </div>
+    
     <!-- Deck Selection -->
-    <div id="deck-selection" class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-        <div class="deck-selector bg-white p-6 rounded-xl shadow-lg cursor-pointer" data-deck="ia">
-            <div class="text-lg font-semibold mb-2">Conceitos de IA</div>
-            <div class="text-sm text-gray-600">20 cartões avançados</div>
+    <div class="max-w-4xl mx-auto">
+        <div id="subject-selection" class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="subject-selector bg-white p-6 rounded-xl shadow-lg cursor-pointer hover:shadow-xl transition-shadow" data-subject="ia">
+                <h2 class="text-xl font-semibold text-purple-700 mb-2">Inteligência Artificial</h2>
+            </div>
+            <div class="subject-selector bg-white p-6 rounded-xl shadow-lg cursor-pointer hover:shadow-xl transition-shadow" data-subject="matematica">
+                <h2 class="text-xl font-semibold text-blue-700 mb-2">Sistemas Operacionais</h2>
+            </div>
         </div>
-        <div class="deck-selector bg-white p-6 rounded-xl shadow-lg cursor-pointer opacity-50 cursor-not-allowed">
-            <div class="text-lg font-semibold mb-2">Personalizado</div>
-            <div class="text-sm text-gray-600">Crie seu próprio baralho</div>
+    </div>
+
+    <!-- Group Selection Screen (inicialmente escondida) -->
+    <div id="group-selection" class="max-w-4xl mx-auto hidden">
+        <button id="back-to-subjects" class="mb-6 text-white hover:text-gray-300">
+            ← Voltar para matérias
+        </button>
+        <h2 id="subject-title" class="text-2xl font-bold text-white mb-6">Selecione o grupo de cards</h2>
+        <div id="groups-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Groups will be inserted here by JavaScript -->
+        </div>
+    </div>
+
+        <!-- Simple Instructions -->
+        <div class="text-center text-gray-300 text-sm">
+            <p class="mb-2">Pressione ESPAÇO para virar o cartão</p>
+            <p>Use Y (Sei) ou N (Não sei) para responder</p>
         </div>
     </div>
 
@@ -93,6 +117,7 @@
         </div>
     </div>
 
+    <!-- Mova os scripts para antes do </body> -->
     <script src="decks.js"></script>
     <script src="app.js"></script>
 </body>
