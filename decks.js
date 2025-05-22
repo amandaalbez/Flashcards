@@ -84,6 +84,61 @@ window.decks = {
                     }
                 ]
             },
+            manipulacao_arquivos: {
+                name: 'Manipulação de Arquivos',
+                cards: [
+                    {
+                        question: "Qual comando lista arquivos com detalhes como permissões e tamanho?",
+                        answer: "ls -l",
+                        category: { name: "Manipulação de Arquivos", color: "bg-blue-500" }
+                    },
+                    {
+                        question: "Como navegar entre diretórios?",
+                        answer: "cd [nome_do_diretorio]",
+                        category: { name: "Manipulação de Arquivos", color: "bg-blue-500" }
+                    },
+                    {
+                        question: "Como mostrar o caminho do diretório atual?",
+                        answer: "pwd",
+                        category: { name: "Manipulação de Arquivos", color: "bg-blue-500" }
+                    },
+                    {
+                        question: "Qual comando é usado para criar um novo diretório?",
+                        answer: "mkdir [nome_do_diretorio]",
+                        category: { name: "Manipulação de Arquivos", color: "bg-blue-500" }
+                    },
+                    {
+                        question: "Como copiar arquivos ou diretórios?",
+                        answer: "cp [arquivo_origem] [arquivo_destino]",
+                        category: { name: "Manipulação de Arquivos", color: "bg-blue-500" }
+                    },
+                    {
+                        question: "Qual comando exibe o conteúdo de um arquivo no terminal?",
+                        answer: "cat [nome_do_arquivo]",
+                        category: { name: "Visualização de Arquivos", color: "bg-blue-500" }
+                    },
+                    {
+                        question: "Como visualizar as primeiras linhas de um arquivo?",
+                        answer: "head [nome_do_arquivo]",
+                        category: { name: "Visualização de Arquivos", color: "bg-blue-500" }
+                    },
+                    {
+                        question: "Como filtrar linhas que correspondem a um padrão dentro de um arquivo?",
+                        answer: "grep [padrão] [nome_do_arquivo]",
+                        category: { name: "Visualização de Arquivos", color: "bg-blue-500" }
+                    },
+                    {
+                        question: "Como listar processos em execução?",
+                        answer: "ps",
+                        category: { name: "Comandos Administrativos", color: "bg-blue-500" }
+                    },
+                    {
+                        question: "Como monitorar processos em tempo real?",
+                        answer: "top",
+                        category: { name: "Comandos Administrativos", color: "bg-blue-500" }
+                    }
+                ]
+            }
         }
     }
 };
