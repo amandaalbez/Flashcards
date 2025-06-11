@@ -12,17 +12,20 @@
     <!-- Header Section -->
     <div class="max-w-2xl mx-auto text-center mb-12">
         <h1 class="text-4xl font-bold text-white mb-3">Flashcards</h1>
-        <p class="text-lg text-gray-300">Teste seus conhecimentos nos diversos assuntos</p>
+        <p class="text-lg text-white">Teste seus conhecimentos nos diversos assuntos</p>
     </div>
 
     <!-- Deck Selection -->
     <div class="max-w-4xl mx-auto">
         <div id="subject-selection" class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <div class="subject-selector bg-white p-6 rounded-xl shadow-lg cursor-pointer hover:shadow-xl transition-shadow" data-subject="so">
+           <!-- <div class="subject-selector bg-white p-6 rounded-xl shadow-lg cursor-pointer hover:shadow-xl transition-shadow" data-subject="so">
                 <h2 class="text-xl font-semibold text-blue-700 mb-2">Sistemas Operacionais</h2>
             </div>
             <div class="subject-selector bg-white p-6 rounded-xl shadow-lg cursor-pointer hover:shadow-xl transition-shadow" data-subject="ia">
                 <h2 class="text-xl font-semibold text-purple-700 mb-2">Inteligência Artificial</h2>
+            </div>-->
+            <div class="subject-selector bg-white p-6 rounded-xl shadow-lg cursor-pointer hover:shadow-xl transition-shadow" data-subject="ed">
+                <h2 class="text-xl font-semibold text-pink-700 mb-2">Estrutura de Dados</h2>
             </div>
         </div>
     </div>
@@ -53,7 +56,7 @@
 
         <!-- Category Label -->
         <div class="text-center mb-4">
-            <span id="category-label" class="category-pill bg-green-500 text-white px-3 py-1 rounded-full">Categoria</span>
+            <span id="category-label" class="category-pill bg-pink-500 text-white px-3 py-1 rounded-full">Categoria</span>
         </div>
 
         <!-- Flashcard -->
@@ -79,7 +82,7 @@
                 <button id="flip-btn" class="btn bg-white text-purple-700 px-6 py-2 rounded-lg shadow-md font-medium mx-2">
                     Virar
                 </button>
-                <button id="know-btn" class="btn bg-green-500 text-white px-6 py-2 rounded-lg shadow-md font-medium mx-2 hidden">
+                <button id="know-btn" class="btn bg-pink-500 text-white px-6 py-2 rounded-lg shadow-md font-medium mx-2 hidden">
                     Sei
                 </button>
                 <button id="dont-know-btn" class="btn bg-red-500 text-white px-6 py-2 rounded-lg shadow-md font-medium mx-2 hidden">
