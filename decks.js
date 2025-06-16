@@ -257,5 +257,92 @@ window.decks = {
                 ]
             }
         }
+    },
+    lfa: {
+        id: 'lfa',
+        name: 'Linguagens Formais e Autômatos',
+        color: 'purple',
+        groups: {
+            conceitos: {
+                name: 'Conceitos Fundamentais',
+                cards: [
+                    {
+                        question: "O que é uma linguagem formal?",
+                        answer: "Um conjunto de cadeias construídas a partir de um alfabeto, seguindo regras gramaticais específicas.",
+                        category: { name: "Conceitos Básicos", color: "bg-purple-500" }
+                    },
+                    {
+                        question: "O que é um alfabeto em linguagens formais?",
+                        answer: "Um conjunto finito de símbolos usados para formar cadeias em uma linguagem. Exemplo: Σ = {0,1}.",
+                        category: { name: "Conceitos Básicos", color: "bg-purple-500" }
+                    },
+                    {
+                        question: "Quais são os tipos de linguagens na Hierarquia de Chomsky?",
+                        answer: "1) Tipo 0 – Recursivamente Enumeráveis (Máquina de Turing).\n2) Tipo 1 – Sensíveis ao Contexto (Máquina de Turing).\n3) Tipo 2 – Livres de Contexto (Autômatos de Pilha).\n4) Tipo 3 – Regulares (Autômatos Finitos).",
+                        category: { name: "Hierarquia", color: "bg-purple-500" }
+                    },
+                    {
+                        question: "O que são expressões regulares?",
+                        answer: "Fórmulas matemáticas para descrever linguagens regulares, usando operações como concatenação, alternância e fecho de Kleene.",
+                        category: { name: "Expressões Regulares", color: "bg-purple-500" }
+                    },
+                    {
+                        question: "Qual a diferença entre um Autômato Finito Determinístico (AFD) e um Autômato Finito Não Determinístico (AFND)?",
+                        answer: "AFD: Cada estado tem apenas uma transição por símbolo.\nAFND: Permite múltiplas transições para o mesmo símbolo.",
+                        category: { name: "Autômatos", color: "bg-purple-500" }
+                    },
+                    {
+                        question: "O que é uma Gramática Livre de Contexto (GLC)?",
+                        answer: "Uma gramática onde o lado esquerdo de cada regra contém apenas um símbolo não terminal.",
+                        category: { name: "Gramáticas", color: "bg-purple-500" }
+                    },
+                    {
+                        question: "O que são autômatos de pilha?",
+                        answer: "Modelos computacionais que utilizam memória auxiliar em pilha para processar linguagens livres de contexto.",
+                        category: { name: "Autômatos", color: "bg-purple-500" }
+                    },
+                    {
+                        question: "Como funciona o Fecho de Kleene (*)?",
+                        answer: "Permite a repetição de um símbolo zero ou mais vezes. Exemplo: a* → \"\", \"a\", \"aa\", \"aaa\"...",
+                        category: { name: "Operações", color: "bg-purple-500" }
+                    },
+                    {
+                        question: "Qual a diferença entre uma linguagem regular e uma livre de contexto?",
+                        answer: "Linguagem Regular: Pode ser descrita por expressões regulares e reconhecida por autômatos finitos.\nLinguagem Livre de Contexto: Precisa de autômatos de pilha para ser reconhecida.",
+                        category: { name: "Linguagens", color: "bg-purple-500" }
+                    },
+                    {
+                        question: "O que caracteriza uma Máquina de Turing?",
+                        answer: "- Tem uma fita infinita\n- O cursor pode mover-se para direita e esquerda\n- Opera leitura e escrita\n- Modelo teórico usado para definir linguagens sensíveis ao contexto e recursivamente enumeráveis",
+                        category: { name: "Máquina de Turing", color: "bg-purple-500" }
+                    },
+                    {
+                        question: "O que são Linguagens Sensíveis ao Contexto?",
+                        answer: "São linguagens em que as regras de produção podem conter múltiplos símbolos no lado esquerdo, exigindo Máquinas de Turing para reconhecimento.",
+                        category: { name: "Linguagens", color: "bg-purple-500" }
+                    },
+                    {
+                        question: "O que são Linguagens Recursivamente Enumeráveis?",
+                        answer: "Linguagens para as quais existe uma Máquina de Turing capaz de listar todas as cadeias válidas.",
+                        category: { name: "Linguagens", color: "bg-purple-500" }
+                    },
+                    {
+                        question: "O que são Linguagens Irrestritas?",
+                        answer: "Linguagens sem limitações na formação das regras, pertencentes ao Tipo 0 da Hierarquia de Chomsky.",
+                        category: { name: "Linguagens", color: "bg-purple-500" }
+                    },
+                    {
+                        question: "O que é um reconhecedor de linguagem?",
+                        answer: "Um autômato ou máquina de Turing capaz de aceitar ou rejeitar cadeias de uma linguagem específica.",
+                        category: { name: "Conceitos Básicos", color: "bg-purple-500" }
+                    },
+                    {
+                        question: "Por que a Máquina de Turing é importante?",
+                        answer: "Ela é um modelo teórico fundamental para o estudo da computabilidade, permitindo a definição de algoritmos computacionais e linguagens formais complexas.",
+                        category: { name: "Máquina de Turing", color: "bg-purple-500" }
+                    }
+                ]
+            }
+        }
     }
 };
